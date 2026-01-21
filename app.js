@@ -642,7 +642,204 @@ function printNametags() {
         showToast('請先點擊「套用格式並預覽全部」', 'error');
         return;
     }
-    window.print();
+
+    // Generate print content in new window
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+        showToast('無法開啟列印視窗，請允許彈出視窗', 'error');
+        return;
+    }
+
+    const persons = state.personsByBus[state.currentBus] || [];
+    const split = state.splitCount;
+    const totalPages = Math.ceil(persons.length / split);
+
+    // Calculate grid layout
+    let cols, rows;
+    switch (split) {
+        case 1: cols = 1; rows = 1; break;
+        case 2: cols = 1; rows = 2; break;
+        case 4: cols = 2; rows = 2; break;
+        case 6: cols = 2; rows = 3; break;
+        case 9: cols = 3; rows = 3; break;
+        default: cols = 2; rows = 2;
+    }
+
+    // Generate all nametag pages HTML
+    let pagesHTML = '';
+    for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
+        pagesHTML += `<div class="a4-page split-${split}">`;
+        for (let i = 0; i < split; i++) {
+            const personIndex = pageIndex * split + i;
+            if (personIndex < persons.length) {
+                pagesHTML += renderNametagHTML(persons[personIndex], personIndex);
+            } else {
+                pagesHTML += `<div class="nametag empty"></div>`;
+            }
+        }
+        pagesHTML += '</div>';
+    }
+
+    // Write complete print document
+    printWindow.document.write(`
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>名牌列印 - ${state.currentBus}車</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: #fff;
+        }
+
+        .a4-page {
+            width: 210mm;
+            height: 297mm;
+            padding: 5mm;
+            display: grid;
+            gap: 3mm;
+            page-break-after: always;
+            background: #fff;
+        }
+
+        .a4-page:last-child {
+            page-break-after: auto;
+        }
+
+        .a4-page.split-1 { grid-template-columns: 1fr; grid-template-rows: 1fr; }
+        .a4-page.split-2 { grid-template-columns: 1fr; grid-template-rows: repeat(2, 1fr); }
+        .a4-page.split-4 { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); }
+        .a4-page.split-6 { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); }
+        .a4-page.split-9 { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); }
+
+        .nametag {
+            border: 2px solid #5a7a5a;
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .nametag.empty {
+            background: #fff;
+            border-color: #ddd;
+        }
+
+        .nametag-header {
+            text-align: center;
+        }
+
+        .nametag-company {
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .nametag-main-title {
+            font-weight: 700;
+            margin: 4px 0;
+        }
+
+        .nametag-sub-info {
+            font-weight: 400;
+        }
+
+        .nametag-name {
+            font-weight: 700;
+            padding: 8px 0;
+            margin: 8px 0;
+            border-top: 1px dashed;
+            border-bottom: 1px dashed;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nametag-details {
+            text-align: left;
+            padding: 4px 8px;
+        }
+
+        .nametag-detail-row {
+            display: flex;
+            align-items: center;
+            margin: 2px 0;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            margin-right: 4px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+        }
+
+        .veg-tag {
+            background: #2e7d32;
+            color: white;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-left: 6px;
+        }
+
+        .nametag-footer {
+            text-align: center;
+            padding-top: 6px;
+            border-top: 1px solid;
+            font-weight: 500;
+        }
+
+        @media print {
+            body { background: white; }
+            .a4-page {
+                margin: 0;
+                box-shadow: none;
+            }
+            .nametag {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+
+        @media screen {
+            body {
+                background: #f0f0f0;
+                padding: 20px;
+            }
+            .a4-page {
+                margin: 0 auto 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body>
+    ${pagesHTML}
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                window.print();
+            }, 500);
+        };
+    </script>
+</body>
+</html>
+    `);
+    printWindow.document.close();
+    showToast('已開啟列印視窗', 'success');
 }
 
 // ===== Word Export Functions =====
