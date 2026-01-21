@@ -653,6 +653,7 @@ function printNametags() {
     const persons = state.personsByBus[state.currentBus] || [];
     const split = state.splitCount;
     const totalPages = Math.ceil(persons.length / split);
+    const busSetting = state.busSetting[state.currentBus] || state.busSetting['A'];
 
     // Calculate grid layout
     let cols, rows;
@@ -665,22 +666,64 @@ function printNametags() {
         default: cols = 2; rows = 2;
     }
 
+    // Generate print-specific nametag HTML (inline all styles)
+    function renderPrintNametag(person, index) {
+        const isVeg = person.isVeg || (person.note && person.note.includes('素'));
+        const setting = state.busSetting[person.bus] || state.busSetting['A'];
+        const bgColor = person.override.bgColor || setting.bgColor;
+        const textColor = setting.textColor;
+        const borderColor = setting.borderColor;
+        const footerText = setting.footerText;
+        const nameFontSize = person.override.fontSize || state.fontSizes.name;
+
+        return `
+            <div class="nametag" style="background: ${bgColor}; border: 2px solid ${borderColor}; color: ${textColor};">
+                <div class="nametag-header">
+                    <div style="font-size: ${state.fontSizes.company}mm; color: ${borderColor}; font-weight: 500; letter-spacing: 1px;">● ${state.config.companyName} ●</div>
+                    <div style="font-size: ${state.fontSizes.event}mm; color: ${textColor}; font-weight: 700; margin: 2mm 0;">${state.config.eventName}</div>
+                    <div style="font-size: ${state.fontSizes.travel}mm; color: ${borderColor};">${state.config.travelInfo}</div>
+                </div>
+                <div class="nametag-name" style="font-size: ${nameFontSize}mm; color: ${textColor}; border-color: ${borderColor};">
+                    ${person.name}
+                </div>
+                <div class="nametag-details" style="font-size: ${state.fontSizes.labels}mm;">
+                    <div class="detail-row">
+                        <span style="color: ${borderColor}; font-weight: 500;">${state.config.busLabel}</span>
+                        <span style="color: ${textColor}; font-weight: 600;">${person.bus} 車</span>
+                    </div>
+                    <div class="detail-row">
+                        <span style="color: ${borderColor}; font-weight: 500;">${state.config.tableLabel}</span>
+                        <span style="color: ${textColor}; font-weight: 600;">${person.table}</span>
+                        ${isVeg ? `<span style="background: #2e7d32; color: white; padding: 1px 6px; border-radius: 4px; font-size: 0.8em; margin-left: 6px;">素食桌</span>` : ''}
+                    </div>
+                    <div class="detail-row">
+                        <span style="color: ${borderColor}; font-weight: 500;">${state.config.roomLabel}</span>
+                        <span style="color: ${textColor}; font-weight: 600;">${person.room}</span>
+                    </div>
+                </div>
+                <div class="nametag-footer" style="font-size: ${state.fontSizes.footer}mm; color: ${borderColor}; border-top: 1px solid ${borderColor};">
+                    ${footerText}
+                </div>
+            </div>
+        `;
+    }
+
     // Generate all nametag pages HTML
     let pagesHTML = '';
     for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
-        pagesHTML += `<div class="a4-page split-${split}">`;
+        pagesHTML += `<div class="a4-page">`;
         for (let i = 0; i < split; i++) {
             const personIndex = pageIndex * split + i;
             if (personIndex < persons.length) {
-                pagesHTML += renderNametagHTML(persons[personIndex], personIndex);
+                pagesHTML += renderPrintNametag(persons[personIndex], personIndex);
             } else {
-                pagesHTML += `<div class="nametag empty"></div>`;
+                pagesHTML += `<div class="nametag empty" style="background: ${busSetting.bgColor}; border: 2px solid ${busSetting.borderColor};"></div>`;
             }
         }
         pagesHTML += '</div>';
     }
 
-    // Write complete print document
+    // Write complete print document with proper @page settings
     printWindow.document.write(`
 <!DOCTYPE html>
 <html>
@@ -689,13 +732,19 @@ function printNametags() {
     <title>名牌列印 - ${state.currentBus}車</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+        html, body {
+            width: 210mm;
             font-family: 'Noto Sans TC', sans-serif;
             background: #fff;
         }
@@ -703,10 +752,14 @@ function printNametags() {
         .a4-page {
             width: 210mm;
             height: 297mm;
-            padding: 5mm;
+            padding: 0;
+            margin: 0;
             display: grid;
-            gap: 3mm;
+            grid-template-columns: repeat(${cols}, 1fr);
+            grid-template-rows: repeat(${rows}, 1fr);
+            gap: 0;
             page-break-after: always;
+            page-break-inside: avoid;
             background: #fff;
         }
 
@@ -714,16 +767,9 @@ function printNametags() {
             page-break-after: auto;
         }
 
-        .a4-page.split-1 { grid-template-columns: 1fr; grid-template-rows: 1fr; }
-        .a4-page.split-2 { grid-template-columns: 1fr; grid-template-rows: repeat(2, 1fr); }
-        .a4-page.split-4 { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(2, 1fr); }
-        .a4-page.split-6 { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 1fr); }
-        .a4-page.split-9 { grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); }
-
         .nametag {
-            border: 2px solid #5a7a5a;
-            border-radius: 8px;
-            padding: 8px;
+            border-radius: 0;
+            padding: 3mm;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -732,32 +778,17 @@ function printNametags() {
         }
 
         .nametag.empty {
-            background: #fff;
-            border-color: #ddd;
+            border-style: dashed;
         }
 
         .nametag-header {
             text-align: center;
         }
 
-        .nametag-company {
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
-
-        .nametag-main-title {
-            font-weight: 700;
-            margin: 4px 0;
-        }
-
-        .nametag-sub-info {
-            font-weight: 400;
-        }
-
         .nametag-name {
             font-weight: 700;
-            padding: 8px 0;
-            margin: 8px 0;
+            padding: 2mm 0;
+            margin: 2mm 0;
             border-top: 1px dashed;
             border-bottom: 1px dashed;
             flex: 1;
@@ -767,61 +798,46 @@ function printNametags() {
         }
 
         .nametag-details {
-            text-align: left;
-            padding: 4px 8px;
+            text-align: center;
+            padding: 2mm;
         }
 
-        .nametag-detail-row {
-            display: flex;
-            align-items: center;
-            margin: 2px 0;
-        }
-
-        .detail-label {
-            font-weight: 500;
-            margin-right: 4px;
-        }
-
-        .detail-value {
-            font-weight: 600;
-        }
-
-        .veg-tag {
-            background: #2e7d32;
-            color: white;
-            padding: 1px 6px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            margin-left: 6px;
+        .detail-row {
+            display: block;
+            margin: 1mm 0;
         }
 
         .nametag-footer {
             text-align: center;
-            padding-top: 6px;
-            border-top: 1px solid;
+            padding-top: 2mm;
             font-weight: 500;
         }
 
         @media print {
-            body { background: white; }
+            html, body {
+                width: 210mm;
+                height: 297mm;
+            }
             .a4-page {
                 margin: 0;
+                padding: 0;
                 box-shadow: none;
             }
             .nametag {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
             }
         }
 
         @media screen {
             body {
-                background: #f0f0f0;
-                padding: 20px;
+                background: #888;
+                padding: 10mm;
             }
             .a4-page {
-                margin: 0 auto 20px;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                margin: 0 auto 10mm;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
             }
         }
     </style>
@@ -829,11 +845,12 @@ function printNametags() {
 <body>
     ${pagesHTML}
     <script>
-        window.onload = function() {
+        // Wait for fonts to load before printing
+        document.fonts.ready.then(function() {
             setTimeout(function() {
                 window.print();
-            }, 500);
-        };
+            }, 300);
+        });
     </script>
 </body>
 </html>
@@ -893,10 +910,12 @@ async function exportSelectedWord() {
 }
 
 async function generateWordDocument(buses) {
-    const { Document, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, AlignmentType, BorderStyle, PageOrientation } = docx;
+    const { Document, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, AlignmentType, BorderStyle, PageOrientation, VerticalAlign, HeightRule, TableLayoutType } = docx;
 
     // Helper function to convert mm to half-points (Word uses half-points)
     const mmToHalfPoints = (mm) => Math.round(mm * 2.835 * 2);
+    // Helper function to convert mm to twips (1mm = 56.7 twips)
+    const mmToTwips = (mm) => Math.round(mm * 56.7);
 
     // Calculate grid based on split count
     let cols, rows;
@@ -908,6 +927,12 @@ async function generateWordDocument(buses) {
         case 9: cols = 3; rows = 3; break;
         default: cols = 2; rows = 2;
     }
+
+    // A4 dimensions in twips (1mm = 56.7 twips)
+    const pageWidth = 11906;  // 210mm
+    const pageHeight = 16838; // 297mm
+    const cellWidth = Math.floor(pageWidth / cols);
+    const rowHeight = Math.floor(pageHeight / rows);
 
     const cellsPerPage = cols * rows;
     const sections = [];
@@ -941,7 +966,8 @@ async function generateWordDocument(buses) {
 
                         cells.push(
                             new TableCell({
-                                width: { size: Math.floor(100 / cols), type: WidthType.PERCENTAGE },
+                                width: { size: cellWidth, type: WidthType.DXA },
+                                verticalAlign: VerticalAlign.CENTER,
                                 children: [
                                     new Paragraph({
                                         alignment: AlignmentType.CENTER,
@@ -972,6 +998,7 @@ async function generateWordDocument(buses) {
                                         ]
                                     }),
                                     new Paragraph({
+                                        alignment: AlignmentType.CENTER,
                                         spacing: { after: 80 },
                                         children: [
                                             new TextRun({ text: `${state.config.busLabel}`, size: mmToHalfPoints(state.fontSizes.labels), color: borderColorHex }),
@@ -979,6 +1006,7 @@ async function generateWordDocument(buses) {
                                         ]
                                     }),
                                     new Paragraph({
+                                        alignment: AlignmentType.CENTER,
                                         spacing: { after: 80 },
                                         children: [
                                             new TextRun({ text: `${state.config.tableLabel}`, size: mmToHalfPoints(state.fontSizes.labels), color: borderColorHex }),
@@ -987,6 +1015,7 @@ async function generateWordDocument(buses) {
                                         ]
                                     }),
                                     new Paragraph({
+                                        alignment: AlignmentType.CENTER,
                                         spacing: { after: 100 },
                                         children: [
                                             new TextRun({ text: `${state.config.roomLabel}`, size: mmToHalfPoints(state.fontSizes.labels), color: borderColorHex }),
@@ -1002,27 +1031,44 @@ async function generateWordDocument(buses) {
                                     })
                                 ],
                                 shading: { fill: bgColorHex },
-                                margins: { top: 200, bottom: 200, left: 200, right: 200 }
+                                margins: { top: 100, bottom: 100, left: 100, right: 100 },
+                                borders: {
+                                    top: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
+                                    bottom: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
+                                    left: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
+                                    right: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex }
+                                }
                             })
                         );
                     } else {
-                        // Empty cell
+                        // Empty cell with background color to fill the page
                         cells.push(
                             new TableCell({
-                                width: { size: Math.floor(100 / cols), type: WidthType.PERCENTAGE },
+                                width: { size: cellWidth, type: WidthType.DXA },
+                                verticalAlign: VerticalAlign.CENTER,
                                 children: [new Paragraph({ text: "" })],
-                                shading: { fill: "FFFFFF" }
+                                shading: { fill: bgColorHex },
+                                borders: {
+                                    top: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
+                                    bottom: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
+                                    left: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
+                                    right: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex }
+                                }
                             })
                         );
                     }
                 }
 
-                tableRows.push(new TableRow({ children: cells }));
+                tableRows.push(new TableRow({
+                    children: cells,
+                    height: { value: rowHeight, rule: HeightRule.EXACT }
+                }));
             }
 
             const table = new Table({
                 rows: tableRows,
-                width: { size: 100, type: WidthType.PERCENTAGE }
+                width: { size: 100, type: WidthType.PERCENTAGE },
+                layout: TableLayoutType.FIXED
             });
 
             sections.push({
@@ -1030,8 +1076,8 @@ async function generateWordDocument(buses) {
                     page: {
                         size: {
                             orientation: PageOrientation.PORTRAIT,
-                            width: 11906, // A4 width in twips
-                            height: 16838 // A4 height in twips
+                            width: pageWidth,
+                            height: pageHeight
                         },
                         margin: { top: 0, right: 0, bottom: 0, left: 0 }
                     }
