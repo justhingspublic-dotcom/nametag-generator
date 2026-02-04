@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>名牌產生器 | NameTag Generator</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://unpkg.com/docx@8.2.2/build/index.umd.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="styles.css?v=20260123e">
+    <!-- 使用本地函式庫，避免 CDN 被封鎖 -->
+    <script src="xlsx.min.js"></script>
+    <script src="jspdf.min.js"></script>
+    <script src="html2canvas.min.js"></script>
 </head>
 <body>
     <!-- Main App -->
@@ -49,11 +48,46 @@
 
                         <!-- Bus Tabs -->
                         <div class="bus-tabs" id="busTabs" style="display: none; margin-top: 16px;">
-                            <div class="bus-tab active" data-bus="A">A車 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="B">B車 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="C">C車 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="D">D車 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="E">E車 <span class="count">0</span></div>
+                            <div class="bus-tab active" data-bus="A">A 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="B">B 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="C">C 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="D">D 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="E">E 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="F">F 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="G">G 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="H">H 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="I">I 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="J">J 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="K">K 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="L">L 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="M">M 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="N">N 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="O">O 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="P">P 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="Q">Q 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="R">R 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="S">S 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="T">T 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="1">1 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="2">2 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="3">3 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="4">4 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="5">5 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="6">6 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="7">7 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="8">8 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="9">9 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="10">10 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="11">11 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="12">12 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="13">13 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="14">14 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="15">15 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="16">16 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="17">17 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="18">18 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="19">19 號 <span class="count">0</span></div>
+                            <div class="bus-tab" data-bus="20">20 號 <span class="count">0</span></div>
                         </div>
 
                         <div style="margin-top: 12px;">
@@ -163,13 +197,13 @@
                     <div class="panel-header">
                         <span class="panel-title">
                             <span class="panel-icon">4</span>
-                            顏色設定 (依車次)
+                            顏色設定 (依組別)
                         </span>
                         <span class="panel-toggle">▼</span>
                     </div>
                     <div class="panel-content">
                         <div class="current-bus-indicator">
-                            目前編輯：<span id="currentBusLabel">A</span> 車
+                            目前編輯：<span id="currentBusLabel">A</span> 號
                         </div>
                         <div class="color-row">
                             <div class="color-picker-wrap">
@@ -241,22 +275,127 @@
                     <div class="panel-content">
                         <!-- Bus Selection for Batch Export -->
                         <div class="control-group">
-                            <label class="control-label">選擇要匯出的車次</label>
+                            <label class="control-label">選擇要匯出的組別</label>
                             <div class="bus-checkboxes" id="busCheckboxes">
                                 <label class="bus-checkbox">
-                                    <input type="checkbox" value="A" checked> A車 <span class="check-count" data-bus="A">0</span>
+                                    <input type="checkbox" value="A" checked> A 號 <span class="check-count" data-bus="A">0</span>
                                 </label>
                                 <label class="bus-checkbox">
-                                    <input type="checkbox" value="B" checked> B車 <span class="check-count" data-bus="B">0</span>
+                                    <input type="checkbox" value="B" checked> B 號 <span class="check-count" data-bus="B">0</span>
                                 </label>
                                 <label class="bus-checkbox">
-                                    <input type="checkbox" value="C" checked> C車 <span class="check-count" data-bus="C">0</span>
+                                    <input type="checkbox" value="C" checked> C 號 <span class="check-count" data-bus="C">0</span>
                                 </label>
                                 <label class="bus-checkbox">
-                                    <input type="checkbox" value="D" checked> D車 <span class="check-count" data-bus="D">0</span>
+                                    <input type="checkbox" value="D" checked> D 號 <span class="check-count" data-bus="D">0</span>
                                 </label>
                                 <label class="bus-checkbox">
-                                    <input type="checkbox" value="E" checked> E車 <span class="check-count" data-bus="E">0</span>
+                                    <input type="checkbox" value="E" checked> E 號 <span class="check-count" data-bus="E">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="F" checked> F 號 <span class="check-count" data-bus="F">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="G" checked> G 號 <span class="check-count" data-bus="G">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="H" checked> H 號 <span class="check-count" data-bus="H">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="I" checked> I 號 <span class="check-count" data-bus="I">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="J" checked> J 號 <span class="check-count" data-bus="J">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="K" checked> K 號 <span class="check-count" data-bus="K">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="L" checked> L 號 <span class="check-count" data-bus="L">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="M" checked> M 號 <span class="check-count" data-bus="M">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="N" checked> N 號 <span class="check-count" data-bus="N">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="O" checked> O 號 <span class="check-count" data-bus="O">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="P" checked> P 號 <span class="check-count" data-bus="P">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="Q" checked> Q 號 <span class="check-count" data-bus="Q">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="R" checked> R 號 <span class="check-count" data-bus="R">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="S" checked> S 號 <span class="check-count" data-bus="S">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="T" checked> T 號 <span class="check-count" data-bus="T">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="1" checked> 1 號 <span class="check-count" data-bus="1">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="2" checked> 2 號 <span class="check-count" data-bus="2">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="3" checked> 3 號 <span class="check-count" data-bus="3">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="4" checked> 4 號 <span class="check-count" data-bus="4">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="5" checked> 5 號 <span class="check-count" data-bus="5">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="6" checked> 6 號 <span class="check-count" data-bus="6">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="7" checked> 7 號 <span class="check-count" data-bus="7">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="8" checked> 8 號 <span class="check-count" data-bus="8">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="9" checked> 9 號 <span class="check-count" data-bus="9">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="10" checked> 10 號 <span class="check-count" data-bus="10">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="11" checked> 11 號 <span class="check-count" data-bus="11">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="12" checked> 12 號 <span class="check-count" data-bus="12">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="13" checked> 13 號 <span class="check-count" data-bus="13">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="14" checked> 14 號 <span class="check-count" data-bus="14">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="15" checked> 15 號 <span class="check-count" data-bus="15">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="16" checked> 16 號 <span class="check-count" data-bus="16">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="17" checked> 17 號 <span class="check-count" data-bus="17">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="18" checked> 18 號 <span class="check-count" data-bus="18">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="19" checked> 19 號 <span class="check-count" data-bus="19">0</span>
+                                </label>
+                                <label class="bus-checkbox">
+                                    <input type="checkbox" value="20" checked> 20 號 <span class="check-count" data-bus="20">0</span>
                                 </label>
                             </div>
                             <div class="select-all-row">
@@ -271,15 +410,6 @@
                             </button>
                             <button class="export-btn primary" id="exportSelectedPdf" disabled>
                                 <span>📄</span> 批次輸出 PDF (已選車次)
-                            </button>
-                            <button class="export-btn word" id="exportWord" disabled>
-                                <span>📝</span> 輸出 Word (目前車次)
-                            </button>
-                            <button class="export-btn word" id="exportSelectedWord" disabled>
-                                <span>📝</span> 批次輸出 Word (已選車次)
-                            </button>
-                            <button class="export-btn secondary" id="printBtn" disabled>
-                                <span>🖨️</span> 直接列印
                             </button>
                         </div>
                     </div>
@@ -358,6 +488,6 @@
     </div>
 
     <!-- App JavaScript -->
-    <script src="app.js"></script>
+    <script src="app.js?v=20260123e"></script>
 </body>
 </html>

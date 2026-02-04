@@ -24,13 +24,48 @@ const state = {
         labels: 3.5,       // 標籤區 (mm)
         footer: 3          // 底部資訊 (mm)
     },
-    // Per-bus settings (colors and footer)
+    // Per-bus settings (colors and footer) - 支援字母 A-T 和數字 1-20
     busSetting: {
-        'A': { bgColor: '#d4e6d4', textColor: '#2a4a2a', borderColor: '#5a7a5a', footerText: 'A 車 領隊 黃啟翔 0935-670-825' },
-        'B': { bgColor: '#d4e0e6', textColor: '#2a3a4a', borderColor: '#5a6a7a', footerText: 'B 車 領隊 待確認' },
-        'C': { bgColor: '#e6e4d4', textColor: '#4a4a2a', borderColor: '#7a7a5a', footerText: 'C 車 領隊 待確認' },
-        'D': { bgColor: '#e6d4d4', textColor: '#4a2a2a', borderColor: '#7a5a5a', footerText: 'D 車 領隊 待確認' },
-        'E': { bgColor: '#e4d4e6', textColor: '#3a2a4a', borderColor: '#6a5a7a', footerText: 'E 車 領隊 待確認' }
+        'A': { bgColor: '#d4e6d4', textColor: '#2a4a2a', borderColor: '#5a7a5a', footerText: 'A 號 領隊 待確認' },
+        'B': { bgColor: '#d4e0e6', textColor: '#2a3a4a', borderColor: '#5a6a7a', footerText: 'B 號 領隊 待確認' },
+        'C': { bgColor: '#e6e4d4', textColor: '#4a4a2a', borderColor: '#7a7a5a', footerText: 'C 號 領隊 待確認' },
+        'D': { bgColor: '#e6d4d4', textColor: '#4a2a2a', borderColor: '#7a5a5a', footerText: 'D 號 領隊 待確認' },
+        'E': { bgColor: '#e4d4e6', textColor: '#3a2a4a', borderColor: '#6a5a7a', footerText: 'E 號 領隊 待確認' },
+        'F': { bgColor: '#d4e6e0', textColor: '#2a4a3a', borderColor: '#5a7a6a', footerText: 'F 號 領隊 待確認' },
+        'G': { bgColor: '#e6d4e0', textColor: '#4a2a3a', borderColor: '#7a5a6a', footerText: 'G 號 領隊 待確認' },
+        'H': { bgColor: '#d4d4e6', textColor: '#2a2a4a', borderColor: '#5a5a7a', footerText: 'H 號 領隊 待確認' },
+        'I': { bgColor: '#e0e6d4', textColor: '#3a4a2a', borderColor: '#6a7a5a', footerText: 'I 號 領隊 待確認' },
+        'J': { bgColor: '#e6e0d4', textColor: '#4a3a2a', borderColor: '#7a6a5a', footerText: 'J 號 領隊 待確認' },
+        'K': { bgColor: '#d4e0e0', textColor: '#2a3a3a', borderColor: '#5a6a6a', footerText: 'K 號 領隊 待確認' },
+        'L': { bgColor: '#e0d4e6', textColor: '#3a2a4a', borderColor: '#6a5a7a', footerText: 'L 號 領隊 待確認' },
+        'M': { bgColor: '#d4e6d4', textColor: '#2a4a2a', borderColor: '#5a7a5a', footerText: 'M 號 領隊 待確認' },
+        'N': { bgColor: '#d4e0e6', textColor: '#2a3a4a', borderColor: '#5a6a7a', footerText: 'N 號 領隊 待確認' },
+        'O': { bgColor: '#e6e4d4', textColor: '#4a4a2a', borderColor: '#7a7a5a', footerText: 'O 號 領隊 待確認' },
+        'P': { bgColor: '#e6d4d4', textColor: '#4a2a2a', borderColor: '#7a5a5a', footerText: 'P 號 領隊 待確認' },
+        'Q': { bgColor: '#e4d4e6', textColor: '#3a2a4a', borderColor: '#6a5a7a', footerText: 'Q 號 領隊 待確認' },
+        'R': { bgColor: '#d4e6e0', textColor: '#2a4a3a', borderColor: '#5a7a6a', footerText: 'R 號 領隊 待確認' },
+        'S': { bgColor: '#e6d4e0', textColor: '#4a2a3a', borderColor: '#7a5a6a', footerText: 'S 號 領隊 待確認' },
+        'T': { bgColor: '#d4d4e6', textColor: '#2a2a4a', borderColor: '#5a5a7a', footerText: 'T 號 領隊 待確認' },
+        '1': { bgColor: '#d4e6d4', textColor: '#2a4a2a', borderColor: '#5a7a5a', footerText: '1 號 領隊 待確認' },
+        '2': { bgColor: '#d4e0e6', textColor: '#2a3a4a', borderColor: '#5a6a7a', footerText: '2 號 領隊 待確認' },
+        '3': { bgColor: '#e6e4d4', textColor: '#4a4a2a', borderColor: '#7a7a5a', footerText: '3 號 領隊 待確認' },
+        '4': { bgColor: '#e6d4d4', textColor: '#4a2a2a', borderColor: '#7a5a5a', footerText: '4 號 領隊 待確認' },
+        '5': { bgColor: '#e4d4e6', textColor: '#3a2a4a', borderColor: '#6a5a7a', footerText: '5 號 領隊 待確認' },
+        '6': { bgColor: '#d4e6e0', textColor: '#2a4a3a', borderColor: '#5a7a6a', footerText: '6 號 領隊 待確認' },
+        '7': { bgColor: '#e6d4e0', textColor: '#4a2a3a', borderColor: '#7a5a6a', footerText: '7 號 領隊 待確認' },
+        '8': { bgColor: '#d4d4e6', textColor: '#2a2a4a', borderColor: '#5a5a7a', footerText: '8 號 領隊 待確認' },
+        '9': { bgColor: '#e0e6d4', textColor: '#3a4a2a', borderColor: '#6a7a5a', footerText: '9 號 領隊 待確認' },
+        '10': { bgColor: '#d4e6d4', textColor: '#2a4a2a', borderColor: '#5a7a5a', footerText: '10 號 領隊 待確認' },
+        '11': { bgColor: '#d4e0e6', textColor: '#2a3a4a', borderColor: '#5a6a7a', footerText: '11 號 領隊 待確認' },
+        '12': { bgColor: '#e6e4d4', textColor: '#4a4a2a', borderColor: '#7a7a5a', footerText: '12 號 領隊 待確認' },
+        '13': { bgColor: '#e6d4d4', textColor: '#4a2a2a', borderColor: '#7a5a5a', footerText: '13 號 領隊 待確認' },
+        '14': { bgColor: '#e4d4e6', textColor: '#3a2a4a', borderColor: '#6a5a7a', footerText: '14 號 領隊 待確認' },
+        '15': { bgColor: '#d4e6e0', textColor: '#2a4a3a', borderColor: '#5a7a6a', footerText: '15 號 領隊 待確認' },
+        '16': { bgColor: '#e6d4e0', textColor: '#4a2a3a', borderColor: '#7a5a6a', footerText: '16 號 領隊 待確認' },
+        '17': { bgColor: '#d4d4e6', textColor: '#2a2a4a', borderColor: '#5a5a7a', footerText: '17 號 領隊 待確認' },
+        '18': { bgColor: '#e0e6d4', textColor: '#3a4a2a', borderColor: '#6a7a5a', footerText: '18 號 領隊 待確認' },
+        '19': { bgColor: '#e6e0d4', textColor: '#4a3a2a', borderColor: '#7a6a5a', footerText: '19 號 領隊 待確認' },
+        '20': { bgColor: '#d4e0e0', textColor: '#2a3a3a', borderColor: '#5a6a6a', footerText: '20 號 領隊 待確認' }
     }
 };
 
@@ -50,9 +85,6 @@ const elements = {
     applyBtn: document.getElementById('applyBtn'),
     exportPdf: document.getElementById('exportPdf'),
     exportSelectedPdf: document.getElementById('exportSelectedPdf'),
-    exportWord: document.getElementById('exportWord'),
-    exportSelectedWord: document.getElementById('exportSelectedWord'),
-    printBtn: document.getElementById('printBtn'),
     busCheckboxes: document.getElementById('busCheckboxes'),
     selectAllBuses: document.getElementById('selectAllBuses'),
     deselectAllBuses: document.getElementById('deselectAllBuses')
@@ -82,6 +114,20 @@ function showToast(message, type = 'success') {
 function handleFileUpload(file) {
     if (!file) return;
 
+    console.log('=== 開始處理檔案 ===');
+    console.log('檔案名稱:', file.name);
+    console.log('檔案大小:', file.size, 'bytes');
+    console.log('檔案類型:', file.type);
+
+    // 檢查 XLSX 函式庫是否載入
+    if (typeof XLSX === 'undefined') {
+        showToast('Excel 函式庫載入失敗，請重新整理頁面', 'error');
+        console.error('XLSX library not loaded - CDN 可能被封鎖');
+        alert('錯誤：Excel 函式庫載入失敗！\n\n可能原因：\n1. 網路封鎖了 CDN\n2. 瀏覽器擴充功能阻擋\n\n請嘗試：\n1. 關閉廣告阻擋器\n2. 使用無痕模式\n3. 檢查網路設定');
+        return;
+    }
+    console.log('XLSX 函式庫已載入');
+
     const reader = new FileReader();
     reader.onload = function(e) {
         try {
@@ -91,11 +137,33 @@ function handleFileUpload(file) {
             // Read from 總表 sheet
             const sheetName = workbook.SheetNames.includes('總表') ? '總表' : workbook.SheetNames[0];
             const sheet = workbook.Sheets[sheetName];
-            const jsonData = XLSX.utils.sheet_to_json(sheet);
+
+            // 先讀取為陣列格式，找出真正的標題列
+            const rawData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+
+            // 尋找包含「姓名」的列作為標題列
+            let headerRowIndex = 0;
+            for (let i = 0; i < Math.min(10, rawData.length); i++) {
+                const row = rawData[i];
+                if (row && row.some(cell => String(cell).includes('姓名'))) {
+                    headerRowIndex = i;
+                    break;
+                }
+            }
+
+            // 使用找到的標題列重新解析
+            const jsonData = XLSX.utils.sheet_to_json(sheet, { range: headerRowIndex });
+
+            console.log('標題列位置:', headerRowIndex);
+            console.log('Excel 欄位名稱:', jsonData.length > 0 ? Object.keys(jsonData[0]) : '無資料');
+            console.log('讀取到的資料筆數:', jsonData.length);
 
             state.allPersons = jsonData.map((row, index) => {
+                // Get name - support multiple column names
+                const nameValue = row['姓名'] || row['名字'] || row['姓 名'] || row['Name'] || row['name'] || '';
+
                 // Get table value - could be number or "素"
-                let tableValue = row['桌次&活動'] || row['桌次'] || row['桌號'] || '';
+                let tableValue = row['桌次&活動'] || row['桌次'] || row['桌號'] || row['桌'] || '';
                 let isVeg = false;
 
                 if (tableValue === '素' || String(tableValue).includes('素')) {
@@ -104,16 +172,26 @@ function handleFileUpload(file) {
                 }
 
                 // Get bus value - support multiple column names
-                let busValue = row['車次'] || row['車 / 船號'] || row['車次&遊湖'] || row['車號'] || 'A';
-                busValue = String(busValue).charAt(0).toUpperCase();
+                let busValue = row['車次'] || row['車 / 船號'] || row['車次&遊湖'] || row['車號'] ||
+                               row['船號'] || row['船次'] || row['號'] || row['編號'] || row['組別'] ||
+                               row['幾號船'] || row['幾號車'] || row['遊湖'] || 'A';
+                // 提取字母或數字 (例如 "A號船" -> "A", "10號船" -> "10")
+                busValue = String(busValue).replace(/[號船車遊湖]/g, '').trim();
+                // 如果是數字開頭，取整個數字；如果是字母開頭，取第一個字母
+                const numMatch = busValue.match(/^\d+/);
+                if (numMatch) {
+                    busValue = numMatch[0];
+                } else {
+                    busValue = busValue.charAt(0).toUpperCase();
+                }
 
                 return {
                     id: index,
-                    name: row['姓名'] || '',
+                    name: nameValue,
                     bus: busValue,
                     table: String(tableValue),
-                    room: String(row['房號'] || ''),
-                    note: row['備註'] || '',
+                    room: String(row['房號'] || row['房 號'] || row['Room'] || ''),
+                    note: row['備註'] || row['備 註'] || row['Note'] || '',
                     isVeg: isVeg,
                     override: {
                         fontSize: null,
@@ -122,12 +200,20 @@ function handleFileUpload(file) {
                 };
             }).filter(p => p.name); // Filter out empty rows
 
-            // Group by bus
-            state.personsByBus = { A: [], B: [], C: [], D: [], E: [] };
+            // Group by bus - 支援字母 A-T 和數字 1-20
+            state.personsByBus = {
+                A: [], B: [], C: [], D: [], E: [], F: [], G: [], H: [], I: [], J: [],
+                K: [], L: [], M: [], N: [], O: [], P: [], Q: [], R: [], S: [], T: [],
+                '1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': [], '8': [], '9': [], '10': [],
+                '11': [], '12': [], '13': [], '14': [], '15': [], '16': [], '17': [], '18': [], '19': [], '20': []
+            };
             state.allPersons.forEach(person => {
-                const bus = person.bus.charAt(0).toUpperCase();
-                if (state.personsByBus[bus]) {
+                const bus = person.bus; // 直接使用已解析的值 (如 "10", "A")
+                if (state.personsByBus[bus] !== undefined) {
                     state.personsByBus[bus].push(person);
+                } else {
+                    // 如果是未預設的組別，動態建立
+                    state.personsByBus[bus] = [person];
                 }
             });
 
@@ -161,17 +247,24 @@ function updateBusTabs() {
         tab.style.display = count > 0 ? 'flex' : 'none';
     });
 
-    // Update checkbox counts in export panel
-    document.querySelectorAll('.check-count').forEach(span => {
-        const bus = span.dataset.bus;
+    // Update checkbox counts in export panel and hide empty ones
+    document.querySelectorAll('.bus-checkbox').forEach(label => {
+        const checkbox = label.querySelector('input[type="checkbox"]');
+        const span = label.querySelector('.check-count');
+        const bus = checkbox.value;
         const count = state.personsByBus[bus]?.length || 0;
         span.textContent = count;
+        // Hide checkboxes with no data
+        label.style.display = count > 0 ? 'flex' : 'none';
     });
 
-    // Select first bus with data
-    const firstBusWithData = ['A', 'B', 'C', 'D', 'E'].find(bus =>
-        state.personsByBus[bus]?.length > 0
-    );
+    // Select first bus with data - 支援字母 A-T 和數字 1-20
+    const firstBusWithData = [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
+        'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+        '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+        '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'
+    ].find(bus => state.personsByBus[bus]?.length > 0);
     if (firstBusWithData) {
         selectBus(firstBusWithData);
     }
@@ -233,7 +326,12 @@ function clearData() {
     }
     if (confirm('確定要清除所有資料嗎？')) {
         state.allPersons = [];
-        state.personsByBus = { A: [], B: [], C: [], D: [], E: [] };
+        state.personsByBus = {
+            A: [], B: [], C: [], D: [], E: [], F: [], G: [], H: [], I: [], J: [],
+            K: [], L: [], M: [], N: [], O: [], P: [], Q: [], R: [], S: [], T: [],
+            '1': [], '2': [], '3': [], '4': [], '5': [], '6': [], '7': [], '8': [], '9': [], '10': [],
+            '11': [], '12': [], '13': [], '14': [], '15': [], '16': [], '17': [], '18': [], '19': [], '20': []
+        };
         state.isApplied = false;
         renderPreview();
         elements.uploadZone.classList.remove('has-file');
@@ -243,9 +341,6 @@ function clearData() {
         elements.applyBtn.disabled = true;
         elements.exportPdf.disabled = true;
         elements.exportSelectedPdf.disabled = true;
-        elements.exportWord.disabled = true;
-        elements.exportSelectedWord.disabled = true;
-        elements.printBtn.disabled = true;
         showToast('資料已清除', 'success');
     }
 }
@@ -274,7 +369,7 @@ function renderPreview() {
     if (!state.isApplied) {
         elements.previewModeInfo.style.display = 'block';
         const previewCount = Math.min(split, persons.length);
-        elements.previewCount.textContent = `${state.currentBus}車：共 ${persons.length} 張，預覽第 1 頁（${previewCount} 張）`;
+        elements.previewCount.textContent = `${state.currentBus} 號：共 ${persons.length} 張，預覽第 1 頁（${previewCount} 張）`;
 
         let html = `<div class="a4-page split-${split}">`;
 
@@ -316,7 +411,7 @@ function renderPreview() {
 
         elements.previewGrid.innerHTML = '';
         elements.previewGrid.appendChild(fragment);
-        elements.previewCount.textContent = `${state.currentBus}車：${persons.length} 張名牌，${totalPages} 頁 A4`;
+        elements.previewCount.textContent = `${state.currentBus} 號：${persons.length} 張名牌，${totalPages} 頁 A4`;
     }
 
     // Add click listeners using event delegation
@@ -358,7 +453,7 @@ function renderNametagHTML(person, index) {
             <div class="nametag-details" style="font-size: ${state.fontSizes.labels}mm;">
                 <div class="nametag-detail-row">
                     <span class="detail-label" style="color: ${borderColor};">${state.config.busLabel}</span>
-                    <span class="detail-value" style="color: ${textColor};">${person.bus} 車</span>
+                    <span class="detail-value" style="color: ${textColor};">${person.bus} 號</span>
                 </div>
                 <div class="nametag-detail-row">
                     <span class="detail-label" style="color: ${borderColor};">${state.config.tableLabel}</span>
@@ -382,9 +477,6 @@ function applyFormat() {
     state.isApplied = true;
     elements.exportPdf.disabled = false;
     elements.exportSelectedPdf.disabled = false;
-    elements.exportWord.disabled = false;
-    elements.exportSelectedWord.disabled = false;
-    elements.printBtn.disabled = false;
     renderPreview();
     showToast('格式已套用，顯示全部名牌', 'success');
 }
@@ -557,7 +649,7 @@ async function exportPdf() {
         pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
     }
 
-    pdf.save(`名牌輸出_${state.currentBus}車.pdf`);
+    pdf.save(`名牌輸出_${state.currentBus}號.pdf`);
     showToast('PDF 已下載', 'success');
 }
 
@@ -581,11 +673,11 @@ async function exportSelectedPdf() {
     );
 
     if (busesWithData.length === 0) {
-        showToast('所選車次中沒有資料', 'error');
+        showToast('所選組別中沒有資料', 'error');
         return;
     }
 
-    showToast(`正在生成 ${busesWithData.length} 個車次 PDF...`, 'success');
+    showToast(`正在生成 ${busesWithData.length} 個組別 PDF...`, 'success');
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF({
@@ -603,7 +695,6 @@ async function exportSelectedPdf() {
 
         // Temporarily switch to this bus and render
         state.currentBus = bus;
-        state.config.footerText = state.footerByBus[bus] || `${bus} 車 領隊 待確認`;
         renderPreview();
 
         // Wait for render
@@ -633,469 +724,13 @@ async function exportSelectedPdf() {
     selectBus(originalBus);
 
     const busLabels = busesWithData.join('');
-    pdf.save(`名牌輸出_${busLabels}車.pdf`);
-    showToast(`${busesWithData.length} 個車次 PDF 已下載`, 'success');
-}
-
-function printNametags() {
-    if (!state.isApplied) {
-        showToast('請先點擊「套用格式並預覽全部」', 'error');
-        return;
-    }
-
-    // Generate print content in new window
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) {
-        showToast('無法開啟列印視窗，請允許彈出視窗', 'error');
-        return;
-    }
-
-    const persons = state.personsByBus[state.currentBus] || [];
-    const split = state.splitCount;
-    const totalPages = Math.ceil(persons.length / split);
-    const busSetting = state.busSetting[state.currentBus] || state.busSetting['A'];
-
-    // Calculate grid layout
-    let cols, rows;
-    switch (split) {
-        case 1: cols = 1; rows = 1; break;
-        case 2: cols = 1; rows = 2; break;
-        case 4: cols = 2; rows = 2; break;
-        case 6: cols = 2; rows = 3; break;
-        case 9: cols = 3; rows = 3; break;
-        default: cols = 2; rows = 2;
-    }
-
-    // Generate print-specific nametag HTML (inline all styles)
-    function renderPrintNametag(person, index) {
-        const isVeg = person.isVeg || (person.note && person.note.includes('素'));
-        const setting = state.busSetting[person.bus] || state.busSetting['A'];
-        const bgColor = person.override.bgColor || setting.bgColor;
-        const textColor = setting.textColor;
-        const borderColor = setting.borderColor;
-        const footerText = setting.footerText;
-        const nameFontSize = person.override.fontSize || state.fontSizes.name;
-
-        return `
-            <div class="nametag" style="background: ${bgColor}; border: 2px solid ${borderColor}; color: ${textColor};">
-                <div class="nametag-header">
-                    <div style="font-size: ${state.fontSizes.company}mm; color: ${borderColor}; font-weight: 500; letter-spacing: 1px;">● ${state.config.companyName} ●</div>
-                    <div style="font-size: ${state.fontSizes.event}mm; color: ${textColor}; font-weight: 700; margin: 2mm 0;">${state.config.eventName}</div>
-                    <div style="font-size: ${state.fontSizes.travel}mm; color: ${borderColor};">${state.config.travelInfo}</div>
-                </div>
-                <div class="nametag-name" style="font-size: ${nameFontSize}mm; color: ${textColor}; border-color: ${borderColor};">
-                    ${person.name}
-                </div>
-                <div class="nametag-details" style="font-size: ${state.fontSizes.labels}mm;">
-                    <div class="detail-row">
-                        <span style="color: ${borderColor}; font-weight: 500;">${state.config.busLabel}</span>
-                        <span style="color: ${textColor}; font-weight: 600;">${person.bus} 車</span>
-                    </div>
-                    <div class="detail-row">
-                        <span style="color: ${borderColor}; font-weight: 500;">${state.config.tableLabel}</span>
-                        <span style="color: ${textColor}; font-weight: 600;">${person.table}</span>
-                        ${isVeg ? `<span style="background: #2e7d32; color: white; padding: 1px 6px; border-radius: 4px; font-size: 0.8em; margin-left: 6px;">素食桌</span>` : ''}
-                    </div>
-                    <div class="detail-row">
-                        <span style="color: ${borderColor}; font-weight: 500;">${state.config.roomLabel}</span>
-                        <span style="color: ${textColor}; font-weight: 600;">${person.room}</span>
-                    </div>
-                </div>
-                <div class="nametag-footer" style="font-size: ${state.fontSizes.footer}mm; color: ${borderColor}; border-top: 1px solid ${borderColor};">
-                    ${footerText}
-                </div>
-            </div>
-        `;
-    }
-
-    // Generate all nametag pages HTML
-    let pagesHTML = '';
-    for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
-        pagesHTML += `<div class="a4-page">`;
-        for (let i = 0; i < split; i++) {
-            const personIndex = pageIndex * split + i;
-            if (personIndex < persons.length) {
-                pagesHTML += renderPrintNametag(persons[personIndex], personIndex);
-            } else {
-                pagesHTML += `<div class="nametag empty" style="background: ${busSetting.bgColor}; border: 2px solid ${busSetting.borderColor};"></div>`;
-            }
-        }
-        pagesHTML += '</div>';
-    }
-
-    // Write complete print document with proper @page settings
-    printWindow.document.write(`
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>名牌列印 - ${state.currentBus}車</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        @page {
-            size: A4 portrait;
-            margin: 0;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 210mm;
-            font-family: 'Noto Sans TC', sans-serif;
-            background: #fff;
-        }
-
-        .a4-page {
-            width: 210mm;
-            height: 297mm;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            grid-template-columns: repeat(${cols}, 1fr);
-            grid-template-rows: repeat(${rows}, 1fr);
-            gap: 0;
-            page-break-after: always;
-            page-break-inside: avoid;
-            background: #fff;
-        }
-
-        .a4-page:last-child {
-            page-break-after: auto;
-        }
-
-        .nametag {
-            border-radius: 0;
-            padding: 3mm;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .nametag.empty {
-            border-style: dashed;
-        }
-
-        .nametag-header {
-            text-align: center;
-        }
-
-        .nametag-name {
-            font-weight: 700;
-            padding: 2mm 0;
-            margin: 2mm 0;
-            border-top: 1px dashed;
-            border-bottom: 1px dashed;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nametag-details {
-            text-align: center;
-            padding: 2mm;
-        }
-
-        .detail-row {
-            display: block;
-            margin: 1mm 0;
-        }
-
-        .nametag-footer {
-            text-align: center;
-            padding-top: 2mm;
-            font-weight: 500;
-        }
-
-        @media print {
-            html, body {
-                width: 210mm;
-                height: 297mm;
-            }
-            .a4-page {
-                margin: 0;
-                padding: 0;
-                box-shadow: none;
-            }
-            .nametag {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-        }
-
-        @media screen {
-            body {
-                background: #888;
-                padding: 10mm;
-            }
-            .a4-page {
-                margin: 0 auto 10mm;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            }
-        }
-    </style>
-</head>
-<body>
-    ${pagesHTML}
-    <script>
-        // Wait for fonts to load before printing
-        document.fonts.ready.then(function() {
-            setTimeout(function() {
-                window.print();
-            }, 300);
-        });
-    </script>
-</body>
-</html>
-    `);
-    printWindow.document.close();
-    showToast('已開啟列印視窗', 'success');
-}
-
-// ===== Word Export Functions =====
-async function exportWord() {
-    if (!state.isApplied) {
-        showToast('請先點擊「套用格式並預覽全部」', 'error');
-        return;
-    }
-
-    showToast('正在生成 Word 文件...', 'success');
-
-    try {
-        const doc = await generateWordDocument([state.currentBus]);
-        const blob = await docx.Packer.toBlob(doc);
-        saveAs(blob, `名牌輸出_${state.currentBus}車.docx`);
-        showToast('Word 文件已下載', 'success');
-    } catch (error) {
-        console.error('Word export error:', error);
-        showToast('Word 輸出失敗', 'error');
-    }
-}
-
-async function exportSelectedWord() {
-    if (!state.isApplied) {
-        showToast('請先點擊「套用格式並預覽全部」', 'error');
-        return;
-    }
-
-    const selectedBuses = getSelectedBuses();
-    const busesWithData = selectedBuses.filter(bus =>
-        state.personsByBus[bus] && state.personsByBus[bus].length > 0
-    );
-
-    if (busesWithData.length === 0) {
-        showToast('所選車次中沒有資料', 'error');
-        return;
-    }
-
-    showToast(`正在生成 ${busesWithData.length} 個車次 Word 文件...`, 'success');
-
-    try {
-        const doc = await generateWordDocument(busesWithData);
-        const blob = await docx.Packer.toBlob(doc);
-        const busLabels = busesWithData.join('');
-        saveAs(blob, `名牌輸出_${busLabels}車.docx`);
-        showToast(`${busesWithData.length} 個車次 Word 文件已下載`, 'success');
-    } catch (error) {
-        console.error('Word export error:', error);
-        showToast('Word 輸出失敗', 'error');
-    }
-}
-
-async function generateWordDocument(buses) {
-    const { Document, Paragraph, TextRun, Table, TableRow, TableCell, WidthType, AlignmentType, BorderStyle, PageOrientation, VerticalAlign, HeightRule, TableLayoutType } = docx;
-
-    // Helper function to convert mm to half-points (Word uses half-points)
-    const mmToHalfPoints = (mm) => Math.round(mm * 2.835 * 2);
-    // Helper function to convert mm to twips (1mm = 56.7 twips)
-    const mmToTwips = (mm) => Math.round(mm * 56.7);
-
-    // Calculate grid based on split count
-    let cols, rows;
-    switch (state.splitCount) {
-        case 1: cols = 1; rows = 1; break;
-        case 2: cols = 1; rows = 2; break;
-        case 4: cols = 2; rows = 2; break;
-        case 6: cols = 2; rows = 3; break;
-        case 9: cols = 3; rows = 3; break;
-        default: cols = 2; rows = 2;
-    }
-
-    // A4 dimensions in twips (1mm = 56.7 twips)
-    const pageWidth = 11906;  // 210mm
-    const pageHeight = 16838; // 297mm
-    const cellWidth = Math.floor(pageWidth / cols);
-    const rowHeight = Math.floor(pageHeight / rows);
-
-    const cellsPerPage = cols * rows;
-    const sections = [];
-
-    for (const bus of buses) {
-        const persons = state.personsByBus[bus] || [];
-        if (persons.length === 0) continue;
-
-        // Get bus-specific settings
-        const busSetting = state.busSetting[bus] || state.busSetting['A'];
-        const footerText = busSetting.footerText;
-        const bgColorHex = busSetting.bgColor.replace('#', '');
-        const textColorHex = busSetting.textColor.replace('#', '');
-        const borderColorHex = busSetting.borderColor.replace('#', '');
-
-        const totalPages = Math.ceil(persons.length / cellsPerPage);
-
-        for (let pageIndex = 0; pageIndex < totalPages; pageIndex++) {
-            const tableRows = [];
-
-            for (let rowIdx = 0; rowIdx < rows; rowIdx++) {
-                const cells = [];
-
-                for (let colIdx = 0; colIdx < cols; colIdx++) {
-                    const personIndex = pageIndex * cellsPerPage + rowIdx * cols + colIdx;
-
-                    if (personIndex < persons.length) {
-                        const person = persons[personIndex];
-                        const isVeg = person.isVeg || (person.note && person.note.includes('素'));
-                        const nameFontSize = person.override.fontSize || state.fontSizes.name;
-
-                        cells.push(
-                            new TableCell({
-                                width: { size: cellWidth, type: WidthType.DXA },
-                                verticalAlign: VerticalAlign.CENTER,
-                                children: [
-                                    new Paragraph({
-                                        alignment: AlignmentType.CENTER,
-                                        spacing: { after: 100 },
-                                        children: [
-                                            new TextRun({ text: `● ${state.config.companyName} ●`, size: mmToHalfPoints(state.fontSizes.company), color: borderColorHex })
-                                        ]
-                                    }),
-                                    new Paragraph({
-                                        alignment: AlignmentType.CENTER,
-                                        spacing: { after: 100 },
-                                        children: [
-                                            new TextRun({ text: state.config.eventName, size: mmToHalfPoints(state.fontSizes.event), bold: true, color: textColorHex })
-                                        ]
-                                    }),
-                                    new Paragraph({
-                                        alignment: AlignmentType.CENTER,
-                                        spacing: { after: 200 },
-                                        children: [
-                                            new TextRun({ text: state.config.travelInfo, size: mmToHalfPoints(state.fontSizes.travel), color: borderColorHex })
-                                        ]
-                                    }),
-                                    new Paragraph({
-                                        alignment: AlignmentType.CENTER,
-                                        spacing: { before: 200, after: 200 },
-                                        children: [
-                                            new TextRun({ text: person.name, size: mmToHalfPoints(nameFontSize), bold: true, color: textColorHex })
-                                        ]
-                                    }),
-                                    new Paragraph({
-                                        alignment: AlignmentType.CENTER,
-                                        spacing: { after: 80 },
-                                        children: [
-                                            new TextRun({ text: `${state.config.busLabel}`, size: mmToHalfPoints(state.fontSizes.labels), color: borderColorHex }),
-                                            new TextRun({ text: `${person.bus} 車`, size: mmToHalfPoints(state.fontSizes.labels), bold: true, color: textColorHex })
-                                        ]
-                                    }),
-                                    new Paragraph({
-                                        alignment: AlignmentType.CENTER,
-                                        spacing: { after: 80 },
-                                        children: [
-                                            new TextRun({ text: `${state.config.tableLabel}`, size: mmToHalfPoints(state.fontSizes.labels), color: borderColorHex }),
-                                            new TextRun({ text: person.table, size: mmToHalfPoints(state.fontSizes.labels), bold: true, color: textColorHex }),
-                                            ...(isVeg ? [new TextRun({ text: " 素食桌", size: mmToHalfPoints(state.fontSizes.labels * 0.9), color: "2a6a2a" })] : [])
-                                        ]
-                                    }),
-                                    new Paragraph({
-                                        alignment: AlignmentType.CENTER,
-                                        spacing: { after: 100 },
-                                        children: [
-                                            new TextRun({ text: `${state.config.roomLabel}`, size: mmToHalfPoints(state.fontSizes.labels), color: borderColorHex }),
-                                            new TextRun({ text: person.room, size: mmToHalfPoints(state.fontSizes.labels), bold: true, color: textColorHex })
-                                        ]
-                                    }),
-                                    new Paragraph({
-                                        alignment: AlignmentType.CENTER,
-                                        spacing: { before: 100 },
-                                        children: [
-                                            new TextRun({ text: footerText, size: mmToHalfPoints(state.fontSizes.footer), color: borderColorHex })
-                                        ]
-                                    })
-                                ],
-                                shading: { fill: bgColorHex },
-                                margins: { top: 100, bottom: 100, left: 100, right: 100 },
-                                borders: {
-                                    top: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
-                                    bottom: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
-                                    left: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
-                                    right: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex }
-                                }
-                            })
-                        );
-                    } else {
-                        // Empty cell with background color to fill the page
-                        cells.push(
-                            new TableCell({
-                                width: { size: cellWidth, type: WidthType.DXA },
-                                verticalAlign: VerticalAlign.CENTER,
-                                children: [new Paragraph({ text: "" })],
-                                shading: { fill: bgColorHex },
-                                borders: {
-                                    top: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
-                                    bottom: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
-                                    left: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex },
-                                    right: { style: BorderStyle.SINGLE, size: 1, color: borderColorHex }
-                                }
-                            })
-                        );
-                    }
-                }
-
-                tableRows.push(new TableRow({
-                    children: cells,
-                    height: { value: rowHeight, rule: HeightRule.EXACT }
-                }));
-            }
-
-            const table = new Table({
-                rows: tableRows,
-                width: { size: 100, type: WidthType.PERCENTAGE },
-                layout: TableLayoutType.FIXED
-            });
-
-            sections.push({
-                properties: {
-                    page: {
-                        size: {
-                            orientation: PageOrientation.PORTRAIT,
-                            width: pageWidth,
-                            height: pageHeight
-                        },
-                        margin: { top: 0, right: 0, bottom: 0, left: 0 }
-                    }
-                },
-                children: [table]
-            });
-        }
-    }
-
-    return new Document({ sections });
+    pdf.save(`名牌輸出_${busLabels}號.pdf`);
+    showToast(`${busesWithData.length} 個組別 PDF 已下載`, 'success');
 }
 
 function setupExportListeners() {
     elements.exportPdf.addEventListener('click', exportPdf);
     elements.exportSelectedPdf.addEventListener('click', exportSelectedPdf);
-    elements.exportWord.addEventListener('click', exportWord);
-    elements.exportSelectedWord.addEventListener('click', exportSelectedWord);
-    elements.printBtn.addEventListener('click', printNametags);
 
     // Select all / Deselect all buttons
     elements.selectAllBuses.addEventListener('click', () => {
@@ -1113,6 +748,17 @@ function setupExportListeners() {
 
 // ===== Initialize =====
 function init() {
+    // 檢查必要函式庫是否載入
+    console.log('=== 系統初始化 ===');
+    console.log('XLSX 函式庫:', typeof XLSX !== 'undefined' ? '已載入' : '未載入');
+    console.log('jsPDF 函式庫:', typeof window.jspdf !== 'undefined' ? '已載入' : '未載入');
+    console.log('html2canvas 函式庫:', typeof html2canvas !== 'undefined' ? '已載入' : '未載入');
+
+    if (typeof XLSX === 'undefined') {
+        console.error('警告：XLSX 函式庫未載入，Excel 匯入功能將無法使用');
+        showToast('Excel 函式庫載入失敗，請檢查網路連線', 'error');
+    }
+
     document.getElementById('clearDataBtn').addEventListener('click', clearData);
 
     setupUploadZone();
