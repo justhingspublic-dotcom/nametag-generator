@@ -206,12 +206,23 @@ body {
     border: 1px solid rgba(46, 125, 50, 0.2);
 }
 
+/* Bus Tabs Container - 在預覽區域上方 */
+.bus-tabs-container {
+    width: 100%;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    max-width: 100%;
+}
+
 /* Bus Tabs */
 .bus-tabs {
     display: flex;
     gap: 8px;
-    margin-bottom: 16px;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .bus-tab {

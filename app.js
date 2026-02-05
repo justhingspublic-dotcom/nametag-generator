@@ -225,7 +225,7 @@ function handleFileUpload(file) {
             elements.uploadZone.classList.add('has-file');
             elements.fileInfo.style.display = 'block';
             elements.fileInfo.textContent = `已匯入：${file.name} (${state.allPersons.length} 筆資料)`;
-            elements.busTabs.style.display = 'flex';
+            document.getElementById('busTabsContainer').style.display = 'block';
             elements.applyBtn.disabled = false;
 
             showToast(`成功匯入 ${state.allPersons.length} 筆資料`, 'success');
@@ -336,7 +336,7 @@ function clearData() {
         renderPreview();
         elements.uploadZone.classList.remove('has-file');
         elements.fileInfo.style.display = 'none';
-        elements.busTabs.style.display = 'none';
+        document.getElementById('busTabsContainer').style.display = 'none';
         elements.fileInput.value = '';
         elements.applyBtn.disabled = true;
         elements.exportPdf.disabled = true;

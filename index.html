@@ -46,50 +46,6 @@
                         </div>
                         <div class="file-info" id="fileInfo" style="display: none;"></div>
 
-                        <!-- Bus Tabs -->
-                        <div class="bus-tabs" id="busTabs" style="display: none; margin-top: 16px;">
-                            <div class="bus-tab active" data-bus="A">A 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="B">B 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="C">C 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="D">D 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="E">E 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="F">F 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="G">G 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="H">H 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="I">I 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="J">J 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="K">K 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="L">L 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="M">M 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="N">N 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="O">O 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="P">P 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="Q">Q 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="R">R 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="S">S 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="T">T 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="1">1 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="2">2 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="3">3 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="4">4 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="5">5 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="6">6 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="7">7 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="8">8 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="9">9 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="10">10 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="11">11 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="12">12 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="13">13 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="14">14 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="15">15 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="16">16 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="17">17 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="18">18 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="19">19 號 <span class="count">0</span></div>
-                            <div class="bus-tab" data-bus="20">20 號 <span class="count">0</span></div>
-                        </div>
-
                         <div style="margin-top: 12px;">
                             <button class="quick-btn" id="clearDataBtn" style="width: 100%;">清除資料</button>
                         </div>
@@ -418,6 +374,52 @@
 
             <!-- Preview Area -->
             <main class="preview-area">
+                <!-- Bus Tabs - 車/船號選擇 -->
+                <div class="bus-tabs-container" id="busTabsContainer" style="display: none;">
+                    <div class="bus-tabs" id="busTabs">
+                        <div class="bus-tab active" data-bus="A">A 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="B">B 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="C">C 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="D">D 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="E">E 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="F">F 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="G">G 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="H">H 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="I">I 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="J">J 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="K">K 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="L">L 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="M">M 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="N">N 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="O">O 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="P">P 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="Q">Q 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="R">R 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="S">S 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="T">T 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="1">1 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="2">2 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="3">3 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="4">4 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="5">5 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="6">6 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="7">7 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="8">8 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="9">9 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="10">10 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="11">11 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="12">12 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="13">13 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="14">14 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="15">15 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="16">16 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="17">17 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="18">18 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="19">19 號 <span class="count">0</span></div>
+                        <div class="bus-tab" data-bus="20">20 號 <span class="count">0</span></div>
+                    </div>
+                </div>
+
                 <div class="preview-header">
                     <h2 class="preview-title">名牌預覽</h2>
                     <span class="preview-count" id="previewCount">共 0 張名牌</span>
